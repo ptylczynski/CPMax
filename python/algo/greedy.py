@@ -1,9 +1,17 @@
+from helper.processor import Processor, InsertMethod, Core
+from helper.inputs import Inputs
+from typing import *
+
+
 class Greedy:
-    def __init__(self, cores: int):
-        self.cores = cores
+    def __init__(self):
+        self.inputs = Inputs()
+        self.processor = Processor(self.inputs.cores_quantity, InsertMethod.FIRST_FREE)
+        self.result: List[Core]
 
     def run(self):
-        pass
+        self.inputs.sort()
+        for task in self.inputs:
+            self.processor.add_task(task)
 
-    def read_inputs(self):
-        pass
+        print(self.processor.dump_cores())
