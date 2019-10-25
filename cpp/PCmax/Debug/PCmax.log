@@ -1,2 +1,2 @@
 ﻿  PCmax.cpp
-  PCmax.vcxproj -> C:\Users\huber\source\repos\PCmax\Debug\PCmax.exe
+c:\users\huber\source\repos\pcmax\pcmax\pcmax.cpp(107): error C2065: 'elapsed': undeclared identifier
