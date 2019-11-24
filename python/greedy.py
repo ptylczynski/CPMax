@@ -1,16 +1,24 @@
 import time
 
 from read_input import Inputs
+from generator import Generator
 
 
 def main():
-    inputs = Inputs()
+    """
+    Greedy algorithm to slove P||C max problem.
+    Solution is to find first "empty" processor and assign
+    to it next task, from task list.
+    Empty processor means processor which as first completes
+    all his tasks
+    :return:
+    """
+    Generator().generate()
+    inputs = Inputs(sort=False)
     processors = [0 for x in range(inputs.processors)]
-    time_start = time.time() * 1000
     for task in inputs.tasks:
         processors[find_empty_core(processors)] += task
-    time_end = time.time() * 1000
-    print("Time: " + str(time_end - time_start) + "ms")
+    print(processors[find_max(processors)])
 
 
 def find_empty_core(processors: list) -> int:
@@ -20,6 +28,16 @@ def find_empty_core(processors: list) -> int:
         if processors[i] < minimal:
             minimal = processors[i]
             pos = i
+    return pos
+
+
+def find_max(processors: list):
+    maximal = 0
+    pos = 0
+    for i in range(len(processors)):
+        if processors[i] > maximal:
+            pos = i
+            maximal = processors[i]
     return pos
 
 

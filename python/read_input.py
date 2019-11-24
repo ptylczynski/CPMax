@@ -1,10 +1,13 @@
 class Inputs:
-    def __init__(self):
+    def __init__(self, sort: bool):
         self.FILE_NAME = "inputs.txt"
         self.processors = 0
         self.tasks = list()
         self.task_count = 0
         self.read_input()
+
+        if sort:
+            self.sort()
 
     def read_input(self):
         with open(self.FILE_NAME, "r") as file:
@@ -13,3 +16,6 @@ class Inputs:
             for line in file:
                 # print(line)
                 self.tasks.append(int(line))
+
+    def sort(self):
+        self.tasks = sorted(self.tasks)
