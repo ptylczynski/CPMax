@@ -18,4 +18,4 @@ class Inputs:
                 self.tasks.append(int(line))
 
     def sort(self):
-        self.tasks = sorted(self.tasks)
+        self.tasks = sorted(self.tasks, reverse=True)

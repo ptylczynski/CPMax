@@ -13,12 +13,13 @@ def main():
     all his tasks
     :return:
     """
-    Generator().generate()
-    inputs = Inputs(sort=False)
+    Generator(10)
+    inputs = Inputs(sort=True)
     processors = [0 for x in range(inputs.processors)]
     for task in inputs.tasks:
         processors[find_empty_core(processors)] += task
-    print(processors[find_max(processors)])
+    print()
+    print("Cmax is: {}".format(processors[find_max(processors)]))
 
 
 def find_empty_core(processors: list) -> int:
