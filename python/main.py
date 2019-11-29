@@ -1,9 +1,10 @@
+from annealing.annealing import Annealing
 from greedy.greedy import Greedy
 from utilities.ConfigReader import ConfigReader
 
 
 def main():
-    Greedy().run()
+    Annealing().run()
 
 
 if __name__ == "__main__":

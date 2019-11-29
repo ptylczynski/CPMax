@@ -5,6 +5,14 @@ from enum import Enum
 
 class ConfigFields(Enum):
     IS_TASK_LIST_SORTED = 2
+    INIT_TEMP_MODIFIER = 3
+    LOWEST_TEMPERATURE = 5
+    MAX_SOLUTION_ERROR = 4
+    ITERATION_COUNT_MODIFIER = 6
+    INSERTION_TO_SWAP_BALANCE = 7
+    ANNEALING_COEFFICIENT = 8
+    BAD_SOLUTION_ACCEPTANCE_THRESHOLD = 9
+    ENERGY_ROOT = 10
 
 
 class AvailableAlgorithms(Enum):
@@ -13,6 +21,10 @@ class AvailableAlgorithms(Enum):
 
 
 class ConfigReader:
+    """
+    API mainly for tuning metaheuristic. It reflects same properties for both greedy and meta.
+    Class each time checks if all fields in config file exist, and if not creates it
+    """
     def __init__(self):
         self.config_file = os.getcwd() + os.path.sep + "config.ini"
         self.config_parser = configparser.ConfigParser()
@@ -50,6 +62,15 @@ class ConfigReader:
             option=field.name)
 
     def check_integrity(self):
+        """
+        Integrity checking consist of two parts,
+        first we check if all sections exist, then we check
+        if some fields are not missing. Dividing integrity check prevents
+        situations in which we know that entire sections gone, but algorithm naive
+        check if maybe some key pairs exist. In this situation we clearly know
+        they not.
+        :return:
+        """
         print("Checking integrity of config file")
         self.check_integrity_of_sections()
         self.check_integrity_of_keys()
