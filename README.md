@@ -37,7 +37,7 @@ Is a greedy algorithm implementation. It sorts list with tasks, such a way longe
 Cmax will be the largest sum of task time on one of processors
 
 ## Annealing
-Is a metaheuritsic, depicted in [document](google.com) attached as part of this repository
+Is a metaheuritsic, depicted in [document](https://www.sciencedirect.com/science/article/pii/S089571771000484X#br000100) attached as part of this repository
 
 ## Task
 First class is `Taks`, which mplements idea of single task to be done in system. In this PCmax version each task is described by it time of execution, so class contains only the time,and some functions to acces it.
